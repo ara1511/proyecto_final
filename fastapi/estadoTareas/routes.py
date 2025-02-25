@@ -30,7 +30,7 @@ async def crear_estado(estado: str, db: Session = Depends(get_db)):
         db.rollback()
         raise HTTPException(status_code=500, detail=f"Ocurrió un error: {e}")
 
-# Listar todos los estados
+# Lista  todos los estados
 @estado_router.get('/', status_code=200)
 async def listar_estados(db: Session = Depends(get_db)):
     try:

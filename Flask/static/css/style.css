@@ -5,17 +5,17 @@
   --success-color: #4ade80;
   --warning-color: #fbbf24;
   --danger-color: #f87171;
-  --light-bg: #f0f4f8; /* Fondo claro */
-  --dark-bg: #1e293b; /* Fondo oscuro */
-  --card-bg: #ffffff; /* Fondo de tarjetas en modo claro */
-  --card-bg-dark: #334155; /* Fondo de tarjetas en modo oscuro */
-  --text-primary: #1e293b; /* Texto principal en modo claro */
-  --text-primary-dark: #f8fafc; /* Texto principal en modo oscuro */
-  --text-secondary: #64748b; /* Texto secundario en modo claro */
-  --text-secondary-dark: #94a3b8; /* Texto secundario en modo oscuro */
-  --text-light: #f8fafc; /* Texto claro (para fondos oscuros) */
-  --border-color: #e2e8f0; /* Borde en modo claro */
-  --border-color-dark: #475569; /* Borde en modo oscuro */
+  --light-bg: #f0f4f8; 
+  --dark-bg: #1e293b; 
+  --card-bg: #ffffff; 
+  --card-bg-dark: #334155; 
+  --text-primary: #1e293b;
+  --text-primary-dark: #f8fafc; 
+  --text-secondary: #64748b; 
+  --text-secondary-dark: #94a3b8; 
+  --text-light: #f8fafc; 
+  --border-color: #e2e8f0; 
+  --border-color-dark: #475569; 
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
@@ -25,7 +25,7 @@
   --transition: all 0.3s ease;
 }
 
-/* Estilos para el modo oscuro */
+
 [data-theme="dark"] {
   --light-bg: var(--dark-bg);
   --card-bg: var(--card-bg-dark);
@@ -34,7 +34,7 @@
   --border-color: var(--border-color-dark);
 }
 
-/* Estilos generales */
+
 body {
   background-color: var(--light-bg);
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -45,7 +45,7 @@ body {
   flex-direction: column;
 }
 
-/* Navbar */
+
 .navbar {
   background-color: var(--card-bg) !important;
   box-shadow: var(--shadow-md);
@@ -90,7 +90,7 @@ body {
   box-shadow: none;
 }
 
-/* Contenedor principal */
+
 .main-container {
   flex: 1;
   padding: 2rem 0;
@@ -125,7 +125,7 @@ body {
   padding: 1.5rem;
 }
 
-/* Tablas */
+
 .table {
   margin-bottom: 0;
 }
@@ -157,7 +157,7 @@ body {
   background-color: rgba(67, 97, 238, 0.05);
 }
 
-/* Botones */
+
 .btn {
   border-radius: var(--radius-md);
   padding: 0.5rem 1.25rem;
@@ -262,7 +262,7 @@ body {
   margin-bottom: 1.25rem;
 }
 
-/* Alertas */
+
 .alert {
   border-radius: var(--radius-md);
   border: none;
@@ -326,7 +326,7 @@ body {
   color: white;
 }
 
-/* Footer */
+
 footer {
   background-color: var(--card-bg);
   border-top: 1px solid var(--border-color);
@@ -339,7 +339,7 @@ footer p {
   color: var(--text-secondary);
 }
 
-/* Animaciones */
+
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
@@ -349,7 +349,7 @@ footer p {
   animation: fadeIn 0.3s ease-out;
 }
 
-/* Responsividad */
+
 @media (max-width: 767.98px) {
   .navbar-collapse {
     background-color: var(--card-bg);

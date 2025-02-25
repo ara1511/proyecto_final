@@ -1,4 +1,4 @@
-// Función para mostrar la fecha actual en formato YYYY-MM-DD
+
 document.addEventListener("DOMContentLoaded", function () {
   // Establecer la fecha actual en los campos de fecha si están presentes
   const dateInputs = document.querySelectorAll('input[type="date"]');
@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // Cerrar automáticamente las alertas después de 5 segundos
+  
   const alerts = document.querySelectorAll(".alert");
   if (alerts.length > 0) {
     setTimeout(function () {
@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 5000);
   }
 
-  // Animar las badges
+  
   const badges = document.querySelectorAll(".badge");
   badges.forEach((badge) => {
     badge.style.transition = "all 0.3s ease-in-out";
@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-// Confirmación personalizada para eliminar
+
 function confirmarEliminar(mensaje) {
   return confirm(
     mensaje || "¿Estás seguro de que deseas eliminar este elemento?"
