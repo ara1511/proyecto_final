@@ -1,0 +1,30 @@
+# Excluir archivos de entorno virtual
+venv/
+.env
+
+# Excluir archivos de caché de Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Excluir archivos de configuración local
+config_local.py
+*.env
+
+# Excluir archivos de IDE
+.idea/
+.vscode/
+
+# Excluir archivos de sistema
+.DS_Store
+Thumbs.db
+
+# Excluir archivos de logs
+*.log
+logs/
+
+# Excluir archivos de dependencias (si no usas un requirements.txt)
+*.egg-info/
+dist/
+build/

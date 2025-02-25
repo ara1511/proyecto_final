@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block title %}Usuarios - Sistema de Gestión de Tareas{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-md-8">
+        <h1>Usuarios</h1>
+    </div>
+    <div class="col-md-4 text-end">
+        <a href="{{ url_for('crear_usuario') }}" class="btn btn-primary">Nuevo Usuario</a>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Edad</th>
+                        <th>Correo</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for usuario in usuarios %}
+                    <tr>
+                        <td>{{ usuario.id }}</td>
+                        <td>{{ usuario.nombre }}</td>
+                        <td>{{ usuario.edad }}</td>
+                        <td>{{ usuario.correo }}</td>
+                        <td>
+                            <a href="{{ url_for('listar_tareas', usuario_id=usuario.id) }}" class="btn btn-sm btn-info">Ver Tareas</a>
+                            <a href="{{ url_for('editar_usuario', id=usuario.id) }}" class="btn btn-sm btn-warning">Editar</a>
+                            <a href="{{ url_for('eliminar_usuario', id=usuario.id) }}" class="btn btn-sm btn-danger" onclick="return confirm('¿Estás seguro de que deseas eliminar este usuario?')">Eliminar</a>
+                        </td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="5" class="text-center">No hay usuarios registrados.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

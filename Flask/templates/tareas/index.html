@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+
+{% block title %}Tareas - Sistema de Gestión de Tareas{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-md-8">
+        <h1>Tareas</h1>
+    </div>
+    <div class="col-md-4 text-end">
+        <a href="{{ url_for('crear_tarea') }}" class="btn btn-primary">Nueva Tarea</a>
+    </div>
+</div>
+
+<div class="card mb-4">
+    <div class="card-header">
+        <h5 class="mb-0">Filtrar Tareas</h5>
+    </div>
+    <div class="card-body">
+        <form method="GET" class="row gx-3 gy-2 align-items-center">
+            <div class="col-md-4">
+                <label for="usuario_id" class="form-label">Usuario</label>
+                <select class="form-select" id="usuario_id" name="usuario_id">
+                    <option value="">Todos los usuarios</option>
+                    {% for usuario in usuarios %}
+                    <option value="{{ usuario.id }}" {% if usuario_seleccionado and usuario.id|string == usuario_seleccionado|string %}selected{% endif %}>
+                        {{ usuario.nombre }}
+                    </option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="col-md-2 d-flex align-items-end">
+                <button type="submit" class="btn btn-primary w-100">Filtrar</button>
+            </div>
+            {% if usuario_seleccionado %}
+            <div class="col-md-2 d-flex align-items-end">
+                <a href="{{ url_for('listar_tareas') }}" class="btn btn-secondary w-100">Limpiar filtro</a>
+            </div>
+            {% endif %}
+        </form>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Tarea</th>
+                        <th>Usuario</th>
+                        <th>Fecha</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for tarea in tareas %}
+                    <tr>
+                        <td>{{ tarea['id'] }}</td>
+                        <td>{{ tarea['tarea'] }}</td>
+                        <td>
+                            {% for usuario in usuarios %}
+                                {% if usuario.id == tarea['usuario_id'] %}
+                                    {{ usuario.nombre }}
+                                {% endif %}
+                            {% endfor %}
+                        </td>
+                        <td>{{ tarea['fecha'] }}</td>
+                        <td>
+                            <span class="badge 
+                                {% if tarea['estado_nombre'] == 'Pendiente' %}bg-warning{% endif %}
+                                {% if tarea['estado_nombre'] == 'En Progreso' %}bg-primary{% endif %}
+                                {% if tarea['estado_nombre'] == 'Completada' %}bg-success{% endif %}
+                            ">
+                                {{ tarea['estado_nombre'] }}
+                            </span>
+                        </td>
+                        <td>
+                            <a href="{{ url_for('editar_tarea', id=tarea['id']) }}" class="btn btn-sm btn-warning">Editar</a>
+                            <a href="{{ url_for('eliminar_tarea', id=tarea['id']) }}" class="btn btn-sm btn-danger" onclick="return confirm('¿Estás seguro de que deseas eliminar esta tarea?')">Eliminar</a>
+                        </td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="6" class="text-center">No hay tareas registradas.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

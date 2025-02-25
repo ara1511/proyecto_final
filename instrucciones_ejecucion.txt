@@ -1,0 +1,43 @@
+Instrucciones para ejecutar el proyecto:
+
+1. Configuración del entorno:
+   - Crear un entorno virtual:
+     python -m venv venv
+   
+   - Activar el entorno virtual:
+     - En Windows: venv\Scripts\activate
+     - En macOS/Linux: source venv/bin/activate
+   
+   - Instalar dependencias:
+     pip install -r requirements.txt
+
+2. Ejecutar la API (FastAPI):
+   - En una terminal (con el entorno virtual activado):
+     cd proyecto_final
+     uvicorn main:app --reload 
+
+3. Ejecutar la aplicación web (Flask):
+   - En otra terminal (con el entorno virtual activado):
+     cd proyecto_final
+     python -m web.app
+
+4. Acceder a las aplicaciones:
+   - API (Swagger UI): http://localhost:8000/docs
+   - Aplicación web: http://localhost:5000
+
+5. Estructura de la base de datos:
+   - La base de datos SQLite (dbfinal.db) ya debería tener las siguientes tablas:
+     * usuarios (id, nombre, edad, correo)
+     * tareas (id, usuario_id, tarea, fecha, id_estado)
+     * estados (id, estado)
+   
+   - Si necesitas crear la base de datos desde cero:
+     - La API creará las tablas automáticamente si no existen
+     - Asegúrate de insertar al menos estos estados básicos:
+       INSERT INTO estados (id, estado) VALUES (1, 'Pendiente');
+       INSERT INTO estados (id, estado) VALUES (2, 'En Progreso');
+       INSERT INTO estados (id, estado) VALUES (3, 'Completada');
+
+Notas adicionales:
+- La aplicación asume que las tareas con estado "Completada" (id_estado = 3) no deben mostrarse en el listado.
+- Asegúrate de que tanto la API como la aplicación web estén ejecutándose simultáneamente para que funcione correctamente.
